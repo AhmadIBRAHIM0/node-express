@@ -24,7 +24,7 @@ const vehicles = [
         year: "2022"
     },
     {
-        id: 3,
+        id: 4,
         type: "Car",
         brand: "BMW",
         model: "E",
@@ -32,7 +32,7 @@ const vehicles = [
         year: "2013"
     },
     {
-        id: 3,
+        id: 5,
         type: "Truck",
         brand: "Mercedes",
         model: "A",
