@@ -62,7 +62,6 @@ const updateVehicle = ((req, res) => {
     const id = Number(req.params.id)
     //Get the index of the vehicle in the array
     const index = vehicles.findIndex(vehicle => vehicle.id === id)
-    console.log(index)
 
     //check if the vehicle found or nah
     if (!vehicles[index]) {
@@ -80,6 +79,11 @@ const updateVehicle = ((req, res) => {
     res.status(200).json('Vehicle updated')
 })
 
+/**
+ * Delete specific vehicle
+ *
+ * @type {(function(*, *): (*|undefined))|*}
+ */
 const deleteVehicle = ((req, res) => {
 
     const id = Number(req.params.id)
@@ -96,5 +100,5 @@ export {
     getVehicle,
     createVehicle,
     updateVehicle,
-    deleteVehicle
+    deleteVehicle,
 }
