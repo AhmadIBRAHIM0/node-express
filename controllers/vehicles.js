@@ -51,8 +51,50 @@ const createVehicle = ((req, res) => {
     res.status(201).json(newVehicle);
 })
 
+/**
+ * Update specific vehicle
+ *
+ * @type {(function(*, *): (*|undefined))|*}
+ */
+const updateVehicle = ((req, res) => {
+
+    //get the id of the vehicle that we want to edit
+    const id = Number(req.params.id)
+    //Get the index of the vehicle in the array
+    const index = vehicles.findIndex(vehicle => vehicle.id === id)
+    console.log(index)
+
+    //check if the vehicle found or nah
+    if (!vehicles[index]) {
+        return res.status(404).send('The vehicle that u want to edit not found')
+    }
+
+    vehicles[index] = {
+        id: vehicles[index].id,
+        type: req.body.type,
+        brand: req.body.brand,
+        model: req.body.model,
+        color: req.body.color,
+        year: req.body.year
+    }
+    res.status(200).json('Vehicle updated')
+})
+
+const deleteVehicle = ((req, res) => {
+
+    const id = Number(req.params.id)
+    const index = vehicles.findIndex(vehicle => vehicle.id === id)
+    if (!vehicles[index]) {
+        return res.status(404).send('The vehicle that u want to delete not found')
+    }
+    vehicles.splice(index,1)
+    res.status(200).json('Vehicle deleted')
+})
+
 export {
     getVehicles,
     getVehicle,
     createVehicle,
+    updateVehicle,
+    deleteVehicle
 }
