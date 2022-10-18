@@ -35,12 +35,12 @@ const getVehicle = ((req, res) => {
  */
 const getVehicleType = ((req, res) => {
 
-    //get the id of the vehicle that we want to find
+    //get the type of the vehicle that we want to find
     const type = String(req.params.type)
-    //search for the vehicle
+    //search for the vehicles
     const newVehicles = vehicles.filter(vehicle => vehicle.type === type)
 
-    //check if the vehicle found or nah
+    //check if there is vehicles
     if (newVehicles.length === 0) {
         return res.status(404).send('No vehicle of type ' + req.params.type + ' found !')
     }
