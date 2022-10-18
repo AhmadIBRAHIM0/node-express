@@ -29,6 +29,25 @@ const getVehicle = ((req, res) => {
 })
 
 /**
+ * Get vehicles by type
+ *
+ * @type {(function(*, *): (*|undefined))|*}
+ */
+const getVehicleType = ((req, res) => {
+
+    //get the id of the vehicle that we want to find
+    const type = String(req.params.type)
+    //search for the vehicle
+    const newVehicles = vehicles.filter(vehicle => vehicle.type === type)
+
+    //check if the vehicle found or nah
+    if (newVehicles.length === 0) {
+        return res.status(404).send('No vehicle of type ' + req.params.type + ' found !')
+    }
+    res.json(newVehicles)
+})
+
+/**
  * Create a new object of vehicle
  *
  * @type {createVehicle}
@@ -98,6 +117,7 @@ const deleteVehicle = ((req, res) => {
 export {
     getVehicles,
     getVehicle,
+    getVehicleType,
     createVehicle,
     updateVehicle,
     deleteVehicle,
